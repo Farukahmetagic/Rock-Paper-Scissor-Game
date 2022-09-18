@@ -8,17 +8,28 @@
     <title>Rock Paper Scissor Game</title>
 </head>
 <body>
+    <div id="container-body">
+        <button id="resetBtn">Reset</button>
+        <div id="container">
+            <div class="selections">
+                <button class="selection selectionBtn" id="rock">✊</button>
+                <button class="selection selectionBtn" id="paper">✋</button>
+                <button class="selection selectionBtn" id="scissors">✌️</button>
+            </div>
 
-    <h2>Computer Choice: <span id="computer-choice"></span></h2>
-    <h2>User Choice: <span id="user-choice"></span></h2>
-    <h2>Result: <span id="result"></span></h2>
-
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-
-    <p>User <span id="result-user">0</span> : <span id="result-comp">0</span> Computer</p>
-
+            <h2 class="choices">Computer chose: <span class="selection" id="computer-choice"></span></h2>
+            <h2 class="choices">You chose: <span class="selection" id="user-choice"></span></h2>
+            
+            <p id="resultSum">
+                User 
+                <span id="result-user">0</span>
+                <span id="result-dot">:</span>            
+                <span id="result-comp">0</span> 
+                Computer
+            </p>
+            <h2><span class="choices" id="result"></span></h2>
+        </div>
+    </div>
     <script src="app.js" charset="utf-8"></script>
 </body>
 </html>

@@ -1,56 +1,74 @@
 const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
-const possibleChoices = document.querySelectorAll("button");
+const possibleChoices = document.getElementsByClassName("selectionBtn");
 const resultUserDisplay = document.getElementById("result-user");
 const resultCompDisplay = document.getElementById("result-comp");
+const resetBtn = document.getElementById("resetBtn");
 
 let userChoice, computerChoice, result;
 let resultUser = 0;
 let resultComp = 0;
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
-    userChoice = e.target.id;
-    userChoiceDisplay.innerHTML = userChoice;
+Array.from(possibleChoices).forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+    userChoice = e.target.innerHTML;
     generateComputerChoice();
     getResult();
 }));
 
+resetBtn.addEventListener('click', (e) => {
+    reset();
+});
+
 const generateComputerChoice = () => {
     const randomNumber = Math.floor(Math.random() * possibleChoices.length);
     if(randomNumber === 0){
-        computerChoice = 'rock';
+        computerChoice = '✊';
     }else if(randomNumber === 1){
-        computerChoice = 'paper';
+        computerChoice = '✋';
     }else if(randomNumber === 2){
-        computerChoice = 'scissors';
+        computerChoice = '✌️';
     }
-    computerChoiceDisplay.innerHTML = computerChoice;
 };
 
 const getResult = () => {
     if(computerChoice === userChoice){
         result = 'It is a draw!';
-    }else if(computerChoice === 'rock' && userChoice === "paper"){
-        result = 'You win!';
-    }else if(computerChoice === 'rock' && userChoice === "scissors"){
-        result = 'Computer wins!';
-    }else if(computerChoice === 'paper' && userChoice === "scissors"){
-        result = 'You win!';
-    }else if(computerChoice === 'paper' && userChoice === "rock"){
-        result = 'Computer wins!'
-    }else if(computerChoice === 'scissors' && userChoice === "rock"){
-        result = 'You win!';
-    }else if(computerChoice === 'scissors' && userChoice === "paper"){
-        result = 'Computer wins!'
-    }
-
-    if(result === "You win!"){
+    }else if(computerChoice === '✊' && userChoice === "✋"){
+        result = 'You win! '+userChoice+' is stronger than '+computerChoice;
         resultUser++;
-    }else if(result === "Computer wins!"){
+    }else if(computerChoice === '✊' && userChoice === "✌️"){
+        result = 'Computer wins!'+computerChoice+' is stronger than '+userChoice;
+        resultComp++;
+    }else if(computerChoice === '✋' && userChoice === "✌️"){
+        result = 'You win!'+userChoice+' is stronger than '+computerChoice;
+        resultUser++;
+    }else if(computerChoice === '✋' && userChoice === "✊"){
+        result = 'Computer wins!'+computerChoice+' is stronger than '+userChoice;
+        resultComp++;
+    }else if(computerChoice === '✌️' && userChoice === "✊"){
+        result = 'You win!'+userChoice+' is stronger than '+computerChoice;
+        resultUser++;
+    }else if(computerChoice === '✌️' && userChoice === "✋"){
+        result = 'Computer wins!'+computerChoice+' is stronger than '+userChoice;
         resultComp++;
     }
 
-    resultUserDisplay.innerHTML = resultUser;
-    resultCompDisplay.innerHTML = resultComp;
-    resultDisplay.innerHTML = result;
+    showData(result, resultUser, resultComp, computerChoice, userChoice);
+}
+
+const showData = (resultData, resultUserData, resultCompData, computerChoiceData, userChoiceData) => {
+    resultDisplay.innerHTML = resultData;                     //1
+    resultUserDisplay.innerHTML = resultUserData;             //2
+    resultCompDisplay.innerHTML = resultCompData;             //3
+    computerChoiceDisplay.innerHTML = computerChoiceData;     //4
+    userChoiceDisplay.innerHTML = userChoiceData;             //5
+}
+
+const reset = () => {
+    result = '';
+    resultUser = 0;
+    resultComp = 0;
+    computerChoice = '';
+    userChoice = '';
+    showData(result, resultUser, resultComp, computerChoice, userChoice); 
 }

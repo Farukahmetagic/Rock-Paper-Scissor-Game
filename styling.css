@@ -1,0 +1,93 @@
+@font-face {
+    font-family: myFont;
+    src: url(fonts/SfDigitalReadoutHeavy-AwVg.ttf);
+}
+
+@font-face {
+    font-family: roboto;
+    src: url(fonts/RobotoCondensed-Regular.ttf);
+}
+
+@media only screen and (max-width: 768px) {
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    #container-body{
+        margin: 0 !important;
+        padding: 0 0 0 0;
+        min-width: 360;
+        width: 100%;
+        height: 100%;
+    }
+    .selection {
+        font-size: 4rem !important;
+    }
+
+    .choices{
+        font-size: 1.5rem !important;
+    }
+}
+
+body {
+    background-color: #ccc;
+    height: 100vh;
+}
+#container-body{
+    background-color: #03fcd7;
+    max-width: 1400px;
+    border-radius: 20px;
+    margin: auto;
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.selections {
+    display: flex; 
+    justify-content: center;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.selection {
+    font-size: 6rem;
+}
+
+.choices{
+    font-family: roboto;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
+
+#resultSum{
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 20px 30px 20px 30px;
+    font-family: myFont;
+    font-size: 2rem;
+}
+
+#result-user, #result-comp, #result-dot{
+    font-size: 4rem;
+}
+
+#resetBtn{
+    font-family: roboto;
+    font-size: 1.5rem;
+    background-color: #fcdf03;
+    border: solid black  2px;
+    border-radius: 10px;
+    padding: 3px 40px;
+}
